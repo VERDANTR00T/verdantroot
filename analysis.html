@@ -143,6 +143,10 @@ button:hover .arrow {
     border-radius: 15px;
     overflow: hidden;
 }
+
+.pdf-button {
+    margin-right: 15px;
+}
 </style>
 </head>
 
@@ -201,13 +205,20 @@ button:hover .arrow {
 
 <div id="resultArea"></div>
 
+<div style="margin-top:20px;">
+<button class="pdf-button" id="downloadPdfBtn">Download PDF Report</button>
+<button class="pdf-button" id="printBtn">Print Report</button>
+</div>
+
 <button id="startConsultBtn" style="display:none; margin-top:20px;">Start Live Consultation</button>
 <div id="jitsiContainer"></div>
 </div>
 
 </div>
 
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js'></script>
 <script src='https://meet.jit.si/external_api.js'></script>
+
 <script>
 function nextStep() {
     document.getElementById("step1").classList.remove("active");
@@ -218,22 +229,19 @@ function startAnalysis() {
     document.getElementById("step2").classList.remove("active");
     document.getElementById("step3").classList.add("active");
 
-    // Scan animation is always running via CSS
-
     setTimeout(function() {
         const name = document.getElementById("name").value;
         const concern = document.getElementById("concern").value;
         const description = document.getElementById("description").value;
         const habits = document.getElementById("habits").value;
         const allergies = document.getElementById("allergies").value;
-        const imageFile = document.getElementById("skinImage").files[0] ? "Uploaded" : "No image";
+        const imageFile = document.getElementById("skinImage").files[0] ? document.getElementById("skinImage").files[0] : null;
 
         const tips = [
             `Skin Concern: ${concern}`,
             `Symptoms: ${description}`,
             `Lifestyle: ${habits}`,
             `Allergies: ${allergies}`,
-            `Image Provided: ${imageFile}`,
             "Tip 1: Use gentle, non-comedogenic products",
             "Tip 2: Maintain hydration and sunscreen daily",
             "Tip 3: Follow routine consistently",
@@ -243,10 +251,53 @@ function startAnalysis() {
         let tipsHTML = "<div class='result-card'><h2>Advanced AI + Doctor Verified Tips:</h2><ul>";
         tips.forEach(tip => { tipsHTML += `<li>${tip}</li>`; });
         tipsHTML += `</ul><button onclick="window.location.href='index.html'">Return Home <span class="arrow">➜</span></button></div>`;
-
         document.getElementById("resultArea").innerHTML = tipsHTML;
 
-        // Show "Start Live Consultation" button
+        // PDF generation
+        document.getElementById("downloadPdfBtn").onclick = async function() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+            doc.setFont("times", "normal");
+            doc.setFontSize(16);
+            doc.text("Verdant Root - AI Skin Report", 20, 20);
+            doc.setFontSize(12);
+            doc.text(`Name: ${name}`, 20, 35);
+            doc.text(`Skin Concern: ${concern}`, 20, 45);
+            doc.text(`Symptoms: ${description}`, 20, 55);
+            doc.text(`Lifestyle: ${habits}`, 20, 65);
+            doc.text(`Allergies: ${allergies}`, 20, 75);
+            let yOffset = 85;
+
+            tips.forEach(tip => {
+                doc.text(`- ${tip}`, 20, yOffset);
+                yOffset += 10;
+            });
+
+            if(imageFile){
+                const reader = new FileReader();
+                reader.onload = function(evt){
+                    const imgData = evt.target.result;
+                    doc.addImage(imgData, 'JPEG', 20, yOffset, 160, 120);
+                    doc.save(`Skin_Report_${name}.pdf`);
+                };
+                reader.readAsDataURL(imageFile);
+            } else {
+                doc.save(`Skin_Report_${name}.pdf`);
+            }
+        };
+
+        // Print
+        document.getElementById("printBtn").onclick = function() {
+            const printContent = document.getElementById("resultArea").innerHTML;
+            const win = window.open('', '', 'width=800,height=600');
+            win.document.write('<html><head><title>Print Report</title></head><body style="background:#071a15;color:white;font-family:Inter,sans-serif;">');
+            win.document.write(printContent);
+            win.document.write('</body></html>');
+            win.document.close();
+            win.print();
+        };
+
+        // Jitsi live consultation
         const consultBtn = document.getElementById("startConsultBtn");
         consultBtn.style.display = "inline-block";
         consultBtn.onclick = function() {
@@ -258,7 +309,7 @@ function startAnalysis() {
                 height: 500
             };
             const api = new JitsiMeetExternalAPI(domain, options);
-            consultBtn.style.display = "none"; // hide after clicked
+            consultBtn.style.display = "none";
         };
 
     }, 2600);
