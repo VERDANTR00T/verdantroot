@@ -41,6 +41,8 @@ nav a {
     transition: 0.3s;
     padding: 5px 10px;
     border-radius: 8px;
+    display: inline-flex;
+    align-items: center;
 }
 
 nav a:hover {
@@ -172,7 +174,12 @@ button:hover {
     <nav>
         <a href="index.html">Home</a>
         <a href="analysis.html">AI Skin Analysis</a>
-        <a href="shop.html">Shop</a>
+        <a href="shop.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#d4af37" viewBox="0 0 24 24">
+                <path d="M6 2l1 4h10l1-4h-12zm12 6h-12v14h12v-14zm-7 2h2v10h-2v-10z"/>
+            </svg>
+            <span style="margin-left:5px;">Shop</span>
+        </a>
     </nav>
 </header>
 
