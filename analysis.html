@@ -80,6 +80,8 @@ button {
     transition: 0.3s;
     font-family: 'Playfair Display', serif;
     font-weight: 600;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
 }
 
 button:hover {
@@ -89,9 +91,9 @@ button:hover {
 
 button .arrow {
     display: inline-block;
-    margin-left: 8px;
+    margin-left: 10px;
     font-weight: bold;
-    font-size: 18px;
+    font-size: 20px;
     transition: transform 0.3s ease;
 }
 
@@ -101,7 +103,7 @@ button:hover .arrow {
 
 .progress {
     width: 100%;
-    height: 10px;
+    height: 12px;
     background: rgba(255,255,255,0.1);
     border-radius: 10px;
     margin-top: 30px;
@@ -112,10 +114,12 @@ button:hover .arrow {
 .progress-bar {
     height: 100%;
     width: 0%;
-    background: #d4af37;
-    transition: width 2.5s ease;
+    background: linear-gradient(90deg, rgba(212,175,55,0.8), rgba(255,255,255,0.6));
     position: relative;
     overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(212,175,55,0.5);
+    transition: width 2.5s ease;
 }
 
 /* Premium scan animation */
@@ -123,17 +127,17 @@ button:hover .arrow {
     content: '';
     position: absolute;
     top: 0;
-    left: -50px;
-    width: 50px;
+    left: -60px;
+    width: 60px;
     height: 100%;
-    background: rgba(255,255,255,0.3);
+    background: rgba(255,255,255,0.4);
     transform: skewX(-20deg);
     animation: scan 2s linear infinite;
 }
 
 @keyframes scan {
-    0% {left: -50px;}
-    100% {left: 100%;}
+    0% { left: -60px; }
+    100% { left: 100%; }
 }
 
 .result-card {
@@ -142,6 +146,7 @@ button:hover .arrow {
     background: rgba(255,255,255,0.08);
     border-radius: 15px;
     line-height: 1.8;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
 }
 
 .score {
@@ -150,7 +155,6 @@ button:hover .arrow {
     margin-bottom: 15px;
 }
 
-/* Jitsi container */
 #jitsiContainer {
     width: 100%;
     height: 500px;
@@ -216,7 +220,6 @@ button:hover .arrow {
 
 <div id="resultArea"></div>
 
-<!-- Jitsi / Live Consultation -->
 <div id="jitsiContainer"></div>
 </div>
 
@@ -242,7 +245,6 @@ function startAnalysis() {
         const allergies = document.getElementById("allergies").value;
         const imageFile = document.getElementById("skinImage").files[0] ? "Uploaded" : "No image";
 
-        // Simulated AI + Doctor Verified Tips
         const tips = [
             `Skin Concern: ${concern}`,
             `Symptoms: ${description}`,
@@ -257,11 +259,10 @@ function startAnalysis() {
 
         let tipsHTML = "<div class='result-card'><h2>Advanced AI + Doctor Verified Tips:</h2><ul>";
         tips.forEach(tip => { tipsHTML += `<li>${tip}</li>`; });
-        tipsHTML += `</ul><button onclick="window.location.href='index.html'">Return Home <span class="arrow">➔</span></button></div>`;
+        tipsHTML += `</ul><button onclick="window.location.href='index.html'">Return Home <span class="arrow">➜</span></button></div>`;
 
         document.getElementById("resultArea").innerHTML = tipsHTML;
 
-        // Initialize Jitsi Live Consultation
         const domain = "meet.jit.si";
         const options = {
             roomName: "VerdantRoot_Consultation_" + Date.now(),
@@ -275,9 +276,7 @@ function startAnalysis() {
 }
 </script>
 
-<!-- Jitsi API Script -->
 <script src='https://meet.jit.si/external_api.js'></script>
 
 </body>
 </html>
-
