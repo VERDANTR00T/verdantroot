@@ -78,11 +78,23 @@ button {
     letter-spacing: 2px;
     cursor: pointer;
     transition: 0.3s;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
 }
 
 button:hover {
     background: #d4af37;
     color: #0b2e25;
+}
+
+button .arrow {
+    display: inline-block;
+    margin-left: 8px;
+    transition: transform 0.3s ease;
+}
+
+button:hover .arrow {
+    transform: translateX(5px);
 }
 
 .progress {
@@ -92,6 +104,7 @@ button:hover {
     border-radius: 10px;
     margin-top: 30px;
     overflow: hidden;
+    position: relative;
 }
 
 .progress-bar {
@@ -99,6 +112,24 @@ button:hover {
     width: 0%;
     background: #d4af37;
     transition: width 2.5s ease;
+}
+
+/* Scan animation for premium feel */
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50px;
+    width: 50px;
+    height: 100%;
+    background: rgba(255,255,255,0.3);
+    transform: skewX(-20deg);
+    animation: scan 2s linear infinite;
+}
+
+@keyframes scan {
+    0% {left: -50px;}
+    100% {left: 100%;}
 }
 
 .result-card {
@@ -113,9 +144,8 @@ button:hover {
     font-size: 28px;
     font-family: 'Playfair Display', serif;
     margin-bottom: 15px;
-}
 
-/* Embedded Jitsi container */
+/* Jitsi container */
 #jitsiContainer {
     width: 100%;
     height: 500px;
@@ -181,7 +211,7 @@ button:hover {
 
 <div id="resultArea"></div>
 
-<!-- Jitsi / Live Consultation will appear here -->
+<!-- Jitsi / Live Consultation -->
 <div id="jitsiContainer"></div>
 </div>
 
@@ -207,7 +237,7 @@ function startAnalysis() {
         const allergies = document.getElementById("allergies").value;
         const imageFile = document.getElementById("skinImage").files[0] ? "Uploaded" : "No image";
 
-        // Simulated AI + Doctor Verified Tips (replace with real AI backend later)
+        // Simulated AI + Doctor Verified Tips
         const tips = [
             `Skin Concern: ${concern}`,
             `Symptoms: ${description}`,
@@ -222,7 +252,7 @@ function startAnalysis() {
 
         let tipsHTML = "<div class='result-card'><h2>Advanced AI + Doctor Verified Tips:</h2><ul>";
         tips.forEach(tip => { tipsHTML += `<li>${tip}</li>`; });
-        tipsHTML += "</ul><button onclick=\"window.location.href='index.html'\">Return Home</button></div>";
+        tipsHTML += `</ul><button onclick="window.location.href='index.html'">Return Home <span class="arrow">→</span></button></div>`;
 
         document.getElementById("resultArea").innerHTML = tipsHTML;
 
