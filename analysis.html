@@ -103,41 +103,28 @@ button:hover .arrow {
 
 .progress {
     width: 100%;
-    height: 12px;
-    background: rgba(255,255,255,0.1);
-    border-radius: 10px;
+    height: 200px; /* tall for camera-style scan */
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
     margin-top: 30px;
-    overflow: hidden;
-    position: relative;
-}
-
-.progress-bar {
-    height: 100%;
-    width: 0%;
-    background: linear-gradient(90deg, rgba(212,175,55,0.8), rgba(255,255,255,0.6));
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
-    box-shadow: 0 0 15px rgba(212,175,55,0.5);
-    transition: width 2.5s ease;
+    box-shadow: inset 0 0 15px rgba(0,0,0,0.5);
 }
 
-/* Premium scan animation */
-.progress-bar::after {
-    content: '';
+.scan-line {
     position: absolute;
-    top: 0;
-    left: -60px;
-    width: 60px;
-    height: 100%;
-    background: rgba(255,255,255,0.4);
-    transform: skewX(-20deg);
-    animation: scan 2s linear infinite;
+    top: -2px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(to right, rgba(212,175,55,0.0), rgba(212,175,55,0.8), rgba(212,175,55,0.0));
+    animation: scanAnim 2s linear infinite;
 }
 
-@keyframes scan {
-    0% { left: -60px; }
-    100% { left: 100%; }
+@keyframes scanAnim {
+    0% { top: 0; }
+    100% { top: 100%; }
 }
 
 .result-card {
@@ -147,12 +134,6 @@ button:hover .arrow {
     border-radius: 15px;
     line-height: 1.8;
     box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-}
-
-.score {
-    font-size: 28px;
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 15px;
 }
 
 #jitsiContainer {
@@ -215,16 +196,18 @@ button:hover .arrow {
 <p>Analyzing skin biomarkers...</p>
 
 <div class="progress">
-<div class="progress-bar" id="bar"></div>
+    <div class="scan-line"></div>
 </div>
 
 <div id="resultArea"></div>
 
+<button id="startConsultBtn" style="display:none; margin-top:20px;">Start Live Consultation</button>
 <div id="jitsiContainer"></div>
 </div>
 
 </div>
 
+<script src='https://meet.jit.si/external_api.js'></script>
 <script>
 function nextStep() {
     document.getElementById("step1").classList.remove("active");
@@ -235,7 +218,7 @@ function startAnalysis() {
     document.getElementById("step2").classList.remove("active");
     document.getElementById("step3").classList.add("active");
 
-    document.getElementById("bar").style.width = "100%";
+    // Scan animation is always running via CSS
 
     setTimeout(function() {
         const name = document.getElementById("name").value;
@@ -263,20 +246,24 @@ function startAnalysis() {
 
         document.getElementById("resultArea").innerHTML = tipsHTML;
 
-        const domain = "meet.jit.si";
-        const options = {
-            roomName: "VerdantRoot_Consultation_" + Date.now(),
-            parentNode: document.querySelector('#jitsiContainer'),
-            width: "100%",
-            height: 500
+        // Show "Start Live Consultation" button
+        const consultBtn = document.getElementById("startConsultBtn");
+        consultBtn.style.display = "inline-block";
+        consultBtn.onclick = function() {
+            const domain = "meet.jit.si";
+            const options = {
+                roomName: "VerdantRoot_Consultation_" + Date.now(),
+                parentNode: document.querySelector('#jitsiContainer'),
+                width: "100%",
+                height: 500
+            };
+            const api = new JitsiMeetExternalAPI(domain, options);
+            consultBtn.style.display = "none"; // hide after clicked
         };
-        const api = new JitsiMeetExternalAPI(domain, options);
 
     }, 2600);
 }
 </script>
-
-<script src='https://meet.jit.si/external_api.js'></script>
 
 </body>
 </html>
