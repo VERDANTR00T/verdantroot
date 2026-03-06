@@ -16,6 +16,22 @@ font-family:'Inter',sans-serif;
 background: radial-gradient(circle at top,#123d32,#071a15);
 color:white;
 text-align:center;
+
+/* NEW ADDITION */
+animation:fadePage 1.2s ease;
+}
+
+/* PAGE FADE ANIMATION */
+
+@keyframes fadePage{
+from{
+opacity:0;
+transform:translateY(20px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
 }
 
 /* NAVBAR */
@@ -99,6 +115,11 @@ border:1px solid #d4af37;
 .section{
 margin-top:120px;
 padding:40px;
+
+/* NEW ADDITION */
+max-width:1100px;
+margin-left:auto;
+margin-right:auto;
 }
 
 .section h2{
@@ -121,11 +142,17 @@ border-radius:16px;
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.15);
 transition:0.3s;
+
+/* NEW ADDITION */
+backdrop-filter:blur(8px);
 }
 
 .step-box:hover{
 transform:translateY(-10px);
 box-shadow:0 15px 40px rgba(0,0,0,0.6);
+
+/* NEW ADDITION */
+border-color:#d4af37;
 }
 
 /* TESTIMONIALS */
@@ -145,6 +172,14 @@ border-radius:16px;
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.15);
 font-size:14px;
+
+/* NEW ADDITION */
+transition:0.3s;
+}
+
+.testimonial:hover{
+transform:translateY(-6px);
+box-shadow:0 10px 30px rgba(0,0,0,0.6);
 }
 
 /* CONTACT */
