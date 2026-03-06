@@ -1,272 +1,274 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>VerdantRoot</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<title>Verdant Root Shop</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-
-*{
-margin:0;
-padding:0;
-box-sizing:border-box;
-font-family:Poppins, sans-serif;
+/* Body & fonts */
+body {
+    margin:0;
+    font-family: 'Inter', sans-serif;
+    background: radial-gradient(circle at top, #123d32, #071a15);
+    color: #ffffff;
 }
 
-body{
-background:#021b19;
-color:white;
+/* Header */
+header {
+    padding: 25px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0,0,0,0.0);
 }
 
-/* NAVBAR */
-
-header{
-position:fixed;
-width:100%;
-top:0;
-background:#052e2b;
-padding:18px 60px;
-z-index:1000;
+header h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: #d4af37;
+    letter-spacing: 1px;
+    margin: 0;
 }
 
-.navbar{
-display:flex;
-justify-content:space-between;
-align-items:center;
+nav a {
+    color: #d4af37;
+    text-decoration: none;
+    margin-left: 25px;
+    font-weight: 600;
+    font-family: 'Playfair Display', serif;
+    transition: 0.3s;
+    padding: 5px 10px;
+    border-radius: 8px;
 }
 
-.logo{
-font-size:22px;
-font-weight:600;
+nav a:hover {
+    color: white;
+    text-shadow: 0 0 10px rgba(212,175,55,0.7);
+    background: rgba(212,175,55,0.1);
 }
 
-.nav-links{
-list-style:none;
-display:flex;
-gap:30px;
+/* Wrapper */
+.wrapper {
+    max-width: 1200px;
+    margin: 30px auto;
+    padding: 0 20px;
 }
 
-.nav-links a{
-text-decoration:none;
-color:white;
-font-size:15px;
-transition:0.3s;
+/* Product grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+    gap: 25px;
 }
 
-.nav-links a:hover{
-color:#7fffd4;
+/* Product card */
+.product-card {
+    background: rgba(255,255,255,0.05);
+    border-radius: 15px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
-/* HERO */
-
-.hero{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-padding:20px;
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(212,175,55,0.5);
 }
 
-.hero h1{
-font-size:48px;
-margin-bottom:20px;
+.product-card img {
+    width: 100%;
+    border-radius: 12px;
+    margin-bottom: 15px;
 }
 
-.hero p{
-max-width:600px;
-margin-bottom:30px;
-color:#d4f1ec;
+.product-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    margin: 10px 0;
 }
 
-.start-btn{
-background:#1ea896;
-border:none;
-padding:14px 28px;
-border-radius:30px;
-font-size:16px;
-cursor:pointer;
-color:white;
+.product-card p {
+    font-size: 16px;
+    margin: 5px 0 15px 0;
 }
 
-.start-btn:hover{
-background:#148f7e;
+/* Buttons */
+button {
+    padding: 10px 20px;
+    border: 1px solid #d4af37;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-family: 'Playfair Display', serif;
+    font-weight: 600;
+    border-radius: 12px;
+    transition: 0.3s;
+    margin: 5px 2px;
+    font-size: 15px;
 }
 
-/* SECTIONS */
-
-.section{
-padding:120px 60px;
-text-align:center;
+button:hover {
+    background: #d4af37;
+    color: #0b2e25;
+    box-shadow: 0 5px 15px rgba(212,175,55,0.5);
 }
 
-.section h2{
-font-size:34px;
-margin-bottom:20px;
+/* Cart */
+.cart {
+    position: fixed;
+    top: 20px;
+    right: 30px;
+    background: rgba(255,255,255,0.08);
+    padding: 20px;
+    border-radius: 15px;
+    max-width: 300px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
 }
 
-.section p{
-max-width:700px;
-margin:auto;
-color:#c8e6e1;
-line-height:1.7;
+.cart h2 {
+    font-family: 'Playfair Display', serif;
+    margin-bottom: 15px;
 }
 
-/* HOW IT WORKS */
-
-.steps{
-display:flex;
-justify-content:center;
-gap:30px;
-margin-top:40px;
-flex-wrap:wrap;
+.cart ul {
+    list-style:none;
+    padding:0;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
-.step{
-background:#063d38;
-padding:30px;
-border-radius:12px;
-width:250px;
+.cart li {
+    display:flex;
+    justify-content: space-between;
+    margin-bottom:10px;
 }
 
-/* FOUNDERS */
-
-.founder-card{
-margin-top:40px;
-background:#063d38;
-padding:30px;
-border-radius:12px;
-display:inline-block;
+.cart-total {
+    margin-top: 15px;
+    font-weight: 600;
 }
 
-/* CONTACT */
-
-.contact-box{
-margin-top:30px;
-line-height:2;
+/* Responsive */
+@media(max-width:600px){
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    nav {
+        margin-top:10px;
+    }
 }
-
-/* FOOTER */
-
-footer{
-padding:30px;
-text-align:center;
-background:#052e2b;
-margin-top:60px;
-color:#a8dcd6;
-}
-
 </style>
 </head>
 
 <body>
 
+<!-- Header -->
 <header>
-
-<nav class="navbar">
-
-<h2 class="logo">VerdantRoot</h2>
-
-<ul class="nav-links">
-<li><a href="#home">Home</a></li>
-<li><a href="#how">How It Works</a></li>
-<li><a href="#answers">Answers</a></li>
-<li><a href="#founders">Founders</a></li>
-<li><a href="#contact">Contact</a></li>
-</ul>
-
-</nav>
-
+    <h1>Verdant Root</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="analysis.html">AI Skin Analysis</a>
+        <a href="shop.html">Shop</a>
+    </nav>
 </header>
 
-<section id="home" class="hero">
-
-<h1>VerdantRoot</h1>
-
-<p>
-AI powered skincare guidance designed to help people understand their skin better and take the first step toward healthier skin.
-</p>
-
-<button class="start-btn">Start Skin Analysis</button>
-
-</section>
-
-<section id="how" class="section">
-
-<h2>How It Works</h2>
-
-<div class="steps">
-
-<div class="step">
-<h3>1. Upload</h3>
-<p>Upload your skin image for quick AI analysis.</p>
+<!-- Products -->
+<div class="wrapper">
+    <div class="grid" id="productGrid">
+        <!-- Products generated by JS -->
+    </div>
 </div>
 
-<div class="step">
-<h3>2. AI Analysis</h3>
-<p>Our system studies your skin patterns and concerns.</p>
+<!-- Cart -->
+<div class="cart" id="cart">
+    <h2>Cart</h2>
+    <ul id="cartItems"></ul>
+    <div class="cart-total" id="cartTotal">Total: ₹0</div>
+    <button id="checkoutBtn">Buy Now</button>
 </div>
 
-<div class="step">
-<h3>3. Get Guidance</h3>
-<p>Receive simple skincare guidance based on your results.</p>
-</div>
+<script>
+// Sample products
+const products = [
+    {id:1, name:"Hydrating Serum", price:1299, img:"https://via.placeholder.com/250x200?text=Serum"},
+    {id:2, name:"Vitamin C Cream", price:1499, img:"https://via.placeholder.com/250x200?text=Cream"},
+    {id:3, name:"Sunscreen SPF50", price:999, img:"https://via.placeholder.com/250x200?text=Sunscreen"},
+    {id:4, name:"Night Repair Gel", price:1099, img:"https://via.placeholder.com/250x200?text=Night+Gel"},
+    {id:5, name:"Moisturizing Lotion", price:899, img:"https://via.placeholder.com/250x200?text=Lotion"},
+    {id:6, name:"Acne Spot Treatment", price:1199, img:"https://via.placeholder.com/250x200?text=Spot+Treatment"}
+];
 
-</div>
+const cart = [];
 
-</section>
+// Render products
+function renderProducts() {
+    const grid = document.getElementById("productGrid");
+    products.forEach(product => {
+        const card = document.createElement("div");
+        card.className = "product-card";
+        card.innerHTML = `
+            <img src="${product.img}" alt="${product.name}">
+            <h3>${product.name}</h3>
+            <p>₹${product.price}</p>
+            <input type="number" id="qty_${product.id}" min="1" value="1" style="width:50px; margin-bottom:10px;">
+            <br>
+            <button onclick="addToCart(${product.id})">Add to Cart</button>
+            <button onclick="removeFromCart(${product.id})">Remove</button>
+        `;
+        grid.appendChild(card);
+    });
+}
 
-<section id="answers" class="section">
+// Add to cart
+function addToCart(id) {
+    const product = products.find(p=>p.id===id);
+    const qty = parseInt(document.getElementById(`qty_${id}`).value);
+    const cartItem = cart.find(c=>c.id===id);
+    if(cartItem){
+        cartItem.qty += qty;
+    } else {
+        cart.push({...product, qty: qty});
+    }
+    updateCart();
+}
 
-<h2>AI Answers</h2>
+// Remove from cart
+function removeFromCart(id){
+    const index = cart.findIndex(c=>c.id===id);
+    if(index!==-1) cart.splice(index,1);
+    updateCart();
+}
 
-<p>
-VerdantRoot provides quick answers to common skincare concerns using AI powered insights. It helps users understand possible skin issues and basic care steps.
-</p>
+// Update cart
+function updateCart(){
+    const ul = document.getElementById("cartItems");
+    ul.innerHTML = "";
+    let total = 0;
+    cart.forEach(item=>{
+        const li = document.createElement("li");
+        li.innerHTML = `${item.name} x${item.qty} - ₹${item.price*item.qty}`;
+        ul.appendChild(li);
+        total += item.price*item.qty;
+    });
+    document.getElementById("cartTotal").innerText = `Total: ₹${total}`;
+}
 
-</section>
+// Checkout demo
+document.getElementById("checkoutBtn").onclick = function(){
+    if(cart.length===0){
+        alert("Cart is empty!");
+    } else {
+        alert("This is a demo checkout. Replace with real payment integration.");
+    }
+}
 
-<section id="founders" class="section">
-
-<h2>Founder</h2>
-
-<div class="founder-card">
-
-<h3>Sumit Kadian</h3>
-
-<p>
-Founder of VerdantRoot with a vision to make intelligent skincare guidance accessible to everyone.
-</p>
-
-</div>
-
-</section>
-
-<section id="contact" class="section">
-
-<h2>Contact Us</h2>
-
-<div class="contact-box">
-
-<p>Email: support@verdantroot.com</p>
-
-<p>LinkedIn: VerdantRoot</p>
-
-</div>
-
-</section>
-
-<footer>
-
-<p>© 2026 VerdantRoot. All Rights Reserved.</p>
-
-</footer>
+// Initialize
+renderProducts();
+</script>
 
 </body>
 </html>
