@@ -19,7 +19,7 @@ text-align:center;
 animation:fadePage 1.2s ease;
 }
 
-/* PAGE FADE ANIMATION */
+/* PAGE FADE */
 
 @keyframes fadePage{
 from{
@@ -67,17 +67,39 @@ border-color:#d4af37;
 
 .hero{
 margin-top:120px;
+padding:20px;
 }
 
 h1{
 font-family:'Playfair Display',serif;
-font-size:48px;
+font-size:50px;
 margin-bottom:20px;
 }
 
 .subtitle{
-opacity:0.8;
+opacity:0.85;
 margin-bottom:40px;
+font-size:18px;
+}
+
+/* HERO IMAGE */
+
+.hero-image{
+margin-top:50px;
+display:flex;
+justify-content:center;
+}
+
+.hero-image img{
+width:85%;
+max-width:750px;
+border-radius:18px;
+box-shadow:0 20px 60px rgba(0,0,0,0.6);
+transition:0.4s;
+}
+
+.hero-image img:hover{
+transform:scale(1.03);
 }
 
 /* BUTTONS */
@@ -112,7 +134,7 @@ background:linear-gradient(135deg,rgba(212,175,55,0.15),rgba(212,175,55,0.05));
 border:1px solid #d4af37;
 }
 
-/* HOW IT WORKS */
+/* SECTIONS */
 
 .section{
 margin-top:120px;
@@ -124,14 +146,16 @@ margin-right:auto;
 
 .section h2{
 font-family:'Playfair Display',serif;
-font-size:34px;
-margin-bottom:50px;
+font-size:36px;
+margin-bottom:60px;
 }
+
+/* STEPS */
 
 .steps{
 display:flex;
 justify-content:center;
-gap:30px;
+gap:35px;
 flex-wrap:wrap;
 }
 
@@ -141,7 +165,7 @@ padding:30px;
 border-radius:16px;
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.15);
-transition:0.3s;
+transition:0.35s;
 backdrop-filter:blur(8px);
 }
 
@@ -149,6 +173,27 @@ backdrop-filter:blur(8px);
 transform:translateY(-10px);
 box-shadow:0 15px 40px rgba(0,0,0,0.6);
 border-color:#d4af37;
+}
+
+/* INGREDIENT VISUAL */
+
+.ingredients{
+margin-top:70px;
+display:flex;
+justify-content:center;
+flex-wrap:wrap;
+gap:30px;
+}
+
+.ingredients img{
+width:260px;
+border-radius:16px;
+box-shadow:0 10px 35px rgba(0,0,0,0.6);
+transition:0.35s;
+}
+
+.ingredients img:hover{
+transform:scale(1.05);
 }
 
 /* TESTIMONIALS */
@@ -221,6 +266,10 @@ AI Powered Skin Intelligence & Smart Skincare Guidance
 
 </div>
 
+<div class="hero-image">
+<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348">
+</div>
+
 </div>
 
 <div class="section">
@@ -243,6 +292,22 @@ AI Powered Skin Intelligence & Smart Skincare Guidance
 <h3>Step 3: Smart Guidance</h3>
 <p>Get affordable, practical, and educational skin care insights.</p>
 </div>
+
+</div>
+
+</div>
+
+<div class="section">
+
+<h2>Natural Ingredients Inspiration</h2>
+
+<div class="ingredients">
+
+<img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108">
+
+<img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908">
+
+<img src="https://images.unsplash.com/photo-1592928302636-c83cf1f0c887">
 
 </div>
 
