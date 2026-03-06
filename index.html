@@ -1,120 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Verdant Root</title>
+<title>VerdantRoot</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
 
-body{
+*{
 margin:0;
-font-family:'Inter',sans-serif;
-background: radial-gradient(circle at top,#123d32,#071a15);
+padding:0;
+box-sizing:border-box;
+font-family:Poppins, sans-serif;
+}
+
+body{
+background:#021b19;
 color:white;
-text-align:center;
 }
 
 /* NAVBAR */
 
-nav{
-display:flex;
-justify-content:center;
-gap:40px;
-padding:25px;
-background:rgba(255,255,255,0.04);
-backdrop-filter:blur(10px);
-flex-wrap:wrap;
+header{
+position:fixed;
+width:100%;
+top:0;
+background:#052e2b;
+padding:18px 60px;
+z-index:1000;
 }
 
-nav a{
+.navbar{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+font-size:22px;
+font-weight:600;
+}
+
+.nav-links{
+list-style:none;
+display:flex;
+gap:30px;
+}
+
+.nav-links a{
 text-decoration:none;
 color:white;
-font-size:14px;
-letter-spacing:1px;
-padding:10px 18px;
-border-radius:8px;
-border:1px solid rgba(255,255,255,0.2);
+font-size:15px;
 transition:0.3s;
 }
 
-nav a:hover{
-background:#d4af37;
-color:#0b2e25;
-border-color:#d4af37;
+.nav-links a:hover{
+color:#7fffd4;
 }
 
 /* HERO */
 
 .hero{
-margin-top:120px;
+height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+padding:20px;
 }
 
-h1{
-font-family:'Playfair Display',serif;
+.hero h1{
 font-size:48px;
 margin-bottom:20px;
 }
 
-.subtitle{
-opacity:0.8;
-margin-bottom:40px;
+.hero p{
+max-width:600px;
+margin-bottom:30px;
+color:#d4f1ec;
 }
 
-/* BUTTONS */
-
-.main-buttons{
-display:flex;
-justify-content:center;
-gap:25px;
-margin-top:40px;
-flex-wrap:wrap;
-}
-
-.btn{
-text-decoration:none;
-padding:15px 30px;
-border:1px solid #d4af37;
-border-radius:10px;
+.start-btn{
+background:#1ea896;
+border:none;
+padding:14px 28px;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
 color:white;
-letter-spacing:1px;
-transition:0.3s;
 }
 
-.btn:hover{
-background:#d4af37;
-color:#0b2e25;
+.start-btn:hover{
+background:#148f7e;
 }
 
 /* SECTIONS */
 
 .section{
-max-width:900px;
-margin:120px auto;
-padding:20px;
+padding:120px 60px;
+text-align:center;
 }
 
 .section h2{
-font-family:'Playfair Display',serif;
 font-size:34px;
 margin-bottom:20px;
 }
 
 .section p{
-opacity:0.8;
+max-width:700px;
+margin:auto;
+color:#c8e6e1;
 line-height:1.7;
+}
+
+/* HOW IT WORKS */
+
+.steps{
+display:flex;
+justify-content:center;
+gap:30px;
+margin-top:40px;
+flex-wrap:wrap;
+}
+
+.step{
+background:#063d38;
+padding:30px;
+border-radius:12px;
+width:250px;
+}
+
+/* FOUNDERS */
+
+.founder-card{
+margin-top:40px;
+background:#063d38;
+padding:30px;
+border-radius:12px;
+display:inline-block;
+}
+
+/* CONTACT */
+
+.contact-box{
+margin-top:30px;
+line-height:2;
 }
 
 /* FOOTER */
 
 footer{
-margin-top:120px;
 padding:30px;
-opacity:0.6;
-font-size:13px;
+text-align:center;
+background:#052e2b;
+margin-top:60px;
+color:#a8dcd6;
 }
 
 </style>
@@ -122,91 +167,104 @@ font-size:13px;
 
 <body>
 
-<!-- NAVBAR -->
+<header>
 
-<nav>
+<nav class="navbar">
 
-<a href="index.html">Home</a>
+<h2 class="logo">VerdantRoot</h2>
 
-<a href="analysis.html">AI Skin Analysis</a>
-
-<a href="shop.html">Shop</a>
-
-<a href="#answers">Answers</a>
-
-<a href="#founders">Founders</a>
-
-<a href="#contact">Contact</a>
+<ul class="nav-links">
+<li><a href="#home">Home</a></li>
+<li><a href="#how">How It Works</a></li>
+<li><a href="#answers">Answers</a></li>
+<li><a href="#founders">Founders</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
 
 </nav>
 
-<!-- HERO -->
+</header>
 
-<div class="hero">
+<section id="home" class="hero">
 
-<h1>Verdant Root</h1>
-
-<p class="subtitle">
-AI Powered Skin Intelligence & Smart Skincare Guidance
-</p>
-
-<div class="main-buttons">
-
-<a class="btn" href="analysis.html">Start AI Skin Scan</a>
-
-<a class="btn" href="shop.html">Premium Shop</a>
-
-</div>
-
-</div>
-
-<!-- ANSWERS SECTION -->
-
-<div id="answers" class="section">
-
-<h2>Smart Skincare Answers</h2>
+<h1>VerdantRoot</h1>
 
 <p>
-Verdant Root combines artificial intelligence with dermatology knowledge
-to analyze skin concerns and provide smart skincare insights.  
-Our goal is to help people understand their skin before spending money
-on products that may not work.
+AI powered skincare guidance designed to help people understand their skin better and take the first step toward healthier skin.
 </p>
+
+<button class="start-btn">Start Skin Analysis</button>
+
+</section>
+
+<section id="how" class="section">
+
+<h2>How It Works</h2>
+
+<div class="steps">
+
+<div class="step">
+<h3>1. Upload</h3>
+<p>Upload your skin image for quick AI analysis.</p>
+</div>
+
+<div class="step">
+<h3>2. AI Analysis</h3>
+<p>Our system studies your skin patterns and concerns.</p>
+</div>
+
+<div class="step">
+<h3>3. Get Guidance</h3>
+<p>Receive simple skincare guidance based on your results.</p>
+</div>
 
 </div>
 
-<!-- FOUNDERS SECTION -->
+</section>
 
-<div id="founders" class="section">
+<section id="answers" class="section">
 
-<h2>Founder's Vision</h2>
+<h2>AI Answers</h2>
 
 <p>
-Verdant Root was created with a simple idea: skincare should be intelligent,
-transparent, and accessible.  
-Instead of blindly trying products, people should understand their skin,
-their lifestyle, and the real causes behind skin problems.
+VerdantRoot provides quick answers to common skincare concerns using AI powered insights. It helps users understand possible skin issues and basic care steps.
+</p>
+
+</section>
+
+<section id="founders" class="section">
+
+<h2>Founder</h2>
+
+<div class="founder-card">
+
+<h3>Sumit Kadian</h3>
+
+<p>
+Founder of VerdantRoot with a vision to make intelligent skincare guidance accessible to everyone.
 </p>
 
 </div>
 
-<!-- CONTACT SECTION -->
+</section>
 
-<div id="contact" class="section">
+<section id="contact" class="section">
 
 <h2>Contact Us</h2>
 
-<p>
-For collaborations, medical partnerships, or inquiries about Verdant Root,
-you can reach us through our official channels.  
-We are building the future of smart skincare guidance.
-</p>
+<div class="contact-box">
+
+<p>Email: support@verdantroot.com</p>
+
+<p>LinkedIn: VerdantRoot</p>
 
 </div>
 
+</section>
+
 <footer>
 
-© Verdant Root — Smart Skincare Intelligence
+<p>© 2026 VerdantRoot. All Rights Reserved.</p>
 
 </footer>
 
