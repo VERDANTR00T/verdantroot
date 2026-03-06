@@ -19,17 +19,9 @@ text-align:center;
 animation:fadePage 1.2s ease;
 }
 
-/* PAGE FADE */
-
 @keyframes fadePage{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
+from{opacity:0; transform:translateY(20px);}
+to{opacity:1; transform:translateY(0);}
 }
 
 /* NAVBAR */
@@ -67,39 +59,17 @@ border-color:#d4af37;
 
 .hero{
 margin-top:120px;
-padding:20px;
 }
 
 h1{
 font-family:'Playfair Display',serif;
-font-size:50px;
+font-size:48px;
 margin-bottom:20px;
 }
 
 .subtitle{
-opacity:0.85;
+opacity:0.8;
 margin-bottom:40px;
-font-size:18px;
-}
-
-/* HERO IMAGE */
-
-.hero-image{
-margin-top:50px;
-display:flex;
-justify-content:center;
-}
-
-.hero-image img{
-width:85%;
-max-width:750px;
-border-radius:18px;
-box-shadow:0 20px 60px rgba(0,0,0,0.6);
-transition:0.4s;
-}
-
-.hero-image img:hover{
-transform:scale(1.03);
 }
 
 /* BUTTONS */
@@ -120,7 +90,6 @@ border-radius:10px;
 color:white;
 letter-spacing:1px;
 transition:0.3s;
-position:relative;
 }
 
 .btn:hover{
@@ -134,7 +103,7 @@ background:linear-gradient(135deg,rgba(212,175,55,0.15),rgba(212,175,55,0.05));
 border:1px solid #d4af37;
 }
 
-/* SECTIONS */
+/* SECTION */
 
 .section{
 margin-top:120px;
@@ -146,16 +115,16 @@ margin-right:auto;
 
 .section h2{
 font-family:'Playfair Display',serif;
-font-size:36px;
-margin-bottom:60px;
+font-size:34px;
+margin-bottom:50px;
 }
 
-/* STEPS */
+/* STEP BOX */
 
 .steps{
 display:flex;
 justify-content:center;
-gap:35px;
+gap:30px;
 flex-wrap:wrap;
 }
 
@@ -165,7 +134,7 @@ padding:30px;
 border-radius:16px;
 background:rgba(255,255,255,0.05);
 border:1px solid rgba(255,255,255,0.15);
-transition:0.35s;
+transition:0.3s;
 backdrop-filter:blur(8px);
 }
 
@@ -173,27 +142,6 @@ backdrop-filter:blur(8px);
 transform:translateY(-10px);
 box-shadow:0 15px 40px rgba(0,0,0,0.6);
 border-color:#d4af37;
-}
-
-/* INGREDIENT VISUAL */
-
-.ingredients{
-margin-top:70px;
-display:flex;
-justify-content:center;
-flex-wrap:wrap;
-gap:30px;
-}
-
-.ingredients img{
-width:260px;
-border-radius:16px;
-box-shadow:0 10px 35px rgba(0,0,0,0.6);
-transition:0.35s;
-}
-
-.ingredients img:hover{
-transform:scale(1.05);
 }
 
 /* TESTIMONIALS */
@@ -227,8 +175,6 @@ box-shadow:0 10px 30px rgba(0,0,0,0.6);
 margin-top:60px;
 font-size:16px;
 }
-
-/* FOOTER */
 
 footer{
 margin-top:120px;
@@ -266,11 +212,9 @@ AI Powered Skin Intelligence & Smart Skincare Guidance
 
 </div>
 
-<div class="hero-image">
-<img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348">
 </div>
 
-</div>
+<!-- HOW IT WORKS -->
 
 <div class="section">
 
@@ -297,32 +241,56 @@ AI Powered Skin Intelligence & Smart Skincare Guidance
 
 </div>
 
+<!-- AI CREDIBILITY -->
+
 <div class="section">
 
-<h2>Natural Ingredients Inspiration</h2>
+<h2>AI Skin Intelligence</h2>
 
-<div class="ingredients">
+<div class="steps">
 
-<img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108">
+<div class="step-box">
+<h3>Advanced Skin Pattern Detection</h3>
+<p>
+Verdant Root AI studies visible skin patterns like tone variation,
+texture signals and surface skin conditions.
+</p>
+</div>
 
-<img src="https://images.unsplash.com/photo-1598440947619-2c35fc9aa908">
+<div class="step-box">
+<h3>Dermatology Inspired Logic</h3>
+<p>
+The system uses dermatology inspired skincare logic and
+ingredient research to guide skincare decisions.
+</p>
+</div>
 
-<img src="https://images.unsplash.com/photo-1592928302636-c83cf1f0c887">
-
+<div class="step-box">
+<h3>Privacy First System</h3>
+<p>
+User images are used only during the scan process
+and are not permanently stored on our platform.
+</p>
 </div>
 
 </div>
+
+</div>
+
+<!-- FOUNDER -->
 
 <div class="section">
 
 <h2>Founder</h2>
 
 <p style="max-width:700px;margin:auto;line-height:1.6;opacity:0.9;">
-Verdant Root was founded by <b>Sumit Kadian</b> to make premium skin guidance affordable and accessible. 
+Verdant Root was founded by <b>Sumit Kadian</b> to make premium skin guidance affordable and accessible.
 Millions in tier-2 & tier-3 cities struggle without proper dermatology support.
 </p>
 
 </div>
+
+<!-- TESTIMONIALS -->
 
 <div class="section">
 
@@ -331,7 +299,7 @@ Millions in tier-2 & tier-3 cities struggle without proper dermatology support.
 <div class="testimonials">
 
 <div class="testimonial">
-"The AI guidance is simple, yet very helpful. Loved the beta experience!"  
+"The AI guidance is simple yet helpful. Loved the beta experience!"  
 <br><br>— Jatin
 </div>
 
@@ -341,13 +309,15 @@ Millions in tier-2 & tier-3 cities struggle without proper dermatology support.
 </div>
 
 <div class="testimonial">
-"The step-by-step scan made me confident to try the suggested routine."  
+"The step-by-step scan made me confident to try the routine."  
 <br><br>— Payal
 </div>
 
 </div>
 
 </div>
+
+<!-- CONTACT -->
 
 <div class="section">
 
