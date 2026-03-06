@@ -1,274 +1,154 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Verdant Root Shop</title>
+
+<title>Verdant Root</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-/* Body & fonts */
-body {
-    margin:0;
-    font-family: 'Inter', sans-serif;
-    background: radial-gradient(circle at top, #123d32, #071a15);
-    color: #ffffff;
+
+body{
+margin:0;
+font-family:'Inter',sans-serif;
+background: radial-gradient(circle at top,#123d32,#071a15);
+color:white;
+text-align:center;
 }
 
-/* Header */
-header {
-    padding: 25px 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background: rgba(0,0,0,0.0);
+/* NAVBAR */
+
+nav{
+display:flex;
+justify-content:center;
+gap:40px;
+padding:25px;
+background:rgba(255,255,255,0.04);
+backdrop-filter:blur(10px);
 }
 
-header h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: 32px;
-    color: #d4af37;
-    letter-spacing: 1px;
-    margin: 0;
+nav a{
+text-decoration:none;
+color:white;
+font-size:14px;
+letter-spacing:1px;
+padding:10px 18px;
+border-radius:8px;
+border:1px solid rgba(255,255,255,0.2);
+transition:0.3s;
 }
 
-nav a {
-    color: #d4af37;
-    text-decoration: none;
-    margin-left: 25px;
-    font-weight: 600;
-    font-family: 'Playfair Display', serif;
-    transition: 0.3s;
-    padding: 5px 10px;
-    border-radius: 8px;
+nav a:hover{
+background:#d4af37;
+color:#0b2e25;
+border-color:#d4af37;
 }
 
-nav a:hover {
-    color: white;
-    text-shadow: 0 0 10px rgba(212,175,55,0.7);
-    background: rgba(212,175,55,0.1);
+/* HERO */
+
+.hero{
+margin-top:120px;
 }
 
-/* Wrapper */
-.wrapper {
-    max-width: 1200px;
-    margin: 30px auto;
-    padding: 0 20px;
+h1{
+font-family:'Playfair Display',serif;
+font-size:48px;
+margin-bottom:20px;
 }
 
-/* Product grid */
-.grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
-    gap: 25px;
+.subtitle{
+opacity:0.8;
+margin-bottom:40px;
 }
 
-/* Product card */
-.product-card {
-    background: rgba(255,255,255,0.05);
-    border-radius: 15px;
-    padding: 20px;
-    text-align: center;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-    transition: transform 0.3s, box-shadow 0.3s;
+/* BUTTONS */
+
+.main-buttons{
+display:flex;
+justify-content:center;
+gap:25px;
+margin-top:40px;
 }
 
-.product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 35px rgba(212,175,55,0.5);
+.btn{
+text-decoration:none;
+padding:15px 30px;
+border:1px solid #d4af37;
+border-radius:10px;
+color:white;
+letter-spacing:1px;
+transition:0.3s;
+position:relative;
 }
 
-.product-card img {
-    width: 100%;
-    border-radius: 12px;
-    margin-bottom: 15px;
+/* GOLD HOVER */
+
+.btn:hover{
+background:#d4af37;
+color:#0b2e25;
+box-shadow:0 0 20px rgba(212,175,55,0.5);
 }
 
-.product-card h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 20px;
-    margin: 10px 0;
+/* PREMIUM SHOP BUTTON */
+
+.shop-btn{
+background:linear-gradient(135deg,rgba(212,175,55,0.15),rgba(212,175,55,0.05));
+border:1px solid #d4af37;
 }
 
-.product-card p {
-    font-size: 16px;
-    margin: 5px 0 15px 0;
+/* FOOTER */
+
+footer{
+margin-top:120px;
+padding:30px;
+opacity:0.6;
+font-size:13px;
 }
 
-/* Buttons */
-button {
-    padding: 10px 20px;
-    border: 1px solid #d4af37;
-    background: transparent;
-    color: white;
-    cursor: pointer;
-    font-family: 'Playfair Display', serif;
-    font-weight: 600;
-    border-radius: 12px;
-    transition: 0.3s;
-    margin: 5px 2px;
-    font-size: 15px;
-}
-
-button:hover {
-    background: #d4af37;
-    color: #0b2e25;
-    box-shadow: 0 5px 15px rgba(212,175,55,0.5);
-}
-
-/* Cart */
-.cart {
-    position: fixed;
-    top: 20px;
-    right: 30px;
-    background: rgba(255,255,255,0.08);
-    padding: 20px;
-    border-radius: 15px;
-    max-width: 300px;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-}
-
-.cart h2 {
-    font-family: 'Playfair Display', serif;
-    margin-bottom: 15px;
-}
-
-.cart ul {
-    list-style:none;
-    padding:0;
-    max-height: 300px;
-    overflow-y: auto;
-}
-
-.cart li {
-    display:flex;
-    justify-content: space-between;
-    margin-bottom:10px;
-}
-
-.cart-total {
-    margin-top: 15px;
-    font-weight: 600;
-}
-
-/* Responsive */
-@media(max-width:600px){
-    header {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-    nav {
-        margin-top:10px;
-    }
-}
 </style>
 </head>
 
 <body>
 
-<!-- Header -->
-<header>
-    <h1>Verdant Root</h1>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="analysis.html">AI Skin Analysis</a>
-        <a href="shop.html">Shop</a>
-    </nav>
-</header>
+<!-- NAVBAR -->
 
-<!-- Products -->
-<div class="wrapper">
-    <div class="grid" id="productGrid">
-        <!-- Products generated by JS -->
-    </div>
+<nav>
+
+<a href="index.html">Home</a>
+
+<a href="analysis.html">AI Skin Analysis</a>
+
+<a href="shop.html">Shop</a>
+
+</nav>
+
+<!-- HERO -->
+
+<div class="hero">
+
+<h1>Verdant Root</h1>
+
+<p class="subtitle">
+AI Powered Skin Intelligence & Smart Skincare Guidance
+</p>
+
+<div class="main-buttons">
+
+<a class="btn" href="analysis.html">Start AI Skin Scan</a>
+
+<a class="btn shop-btn" href="shop.html">Premium Shop</a>
+
 </div>
 
-<!-- Cart -->
-<div class="cart" id="cart">
-    <h2>Cart</h2>
-    <ul id="cartItems"></ul>
-    <div class="cart-total" id="cartTotal">Total: ₹0</div>
-    <button id="checkoutBtn">Buy Now</button>
 </div>
 
-<script>
-// Sample products
-const products = [
-    {id:1, name:"Hydrating Serum", price:1299, img:"https://via.placeholder.com/250x200?text=Serum"},
-    {id:2, name:"Vitamin C Cream", price:1499, img:"https://via.placeholder.com/250x200?text=Cream"},
-    {id:3, name:"Sunscreen SPF50", price:999, img:"https://via.placeholder.com/250x200?text=Sunscreen"},
-    {id:4, name:"Night Repair Gel", price:1099, img:"https://via.placeholder.com/250x200?text=Night+Gel"},
-    {id:5, name:"Moisturizing Lotion", price:899, img:"https://via.placeholder.com/250x200?text=Lotion"},
-    {id:6, name:"Acne Spot Treatment", price:1199, img:"https://via.placeholder.com/250x200?text=Spot+Treatment"}
-];
+<footer>
 
-const cart = [];
+© Verdant Root — Smart Skincare Intelligence
 
-// Render products
-function renderProducts() {
-    const grid = document.getElementById("productGrid");
-    products.forEach(product => {
-        const card = document.createElement("div");
-        card.className = "product-card";
-        card.innerHTML = `
-            <img src="${product.img}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p>₹${product.price}</p>
-            <input type="number" id="qty_${product.id}" min="1" value="1" style="width:50px; margin-bottom:10px;">
-            <br>
-            <button onclick="addToCart(${product.id})">Add to Cart</button>
-            <button onclick="removeFromCart(${product.id})">Remove</button>
-        `;
-        grid.appendChild(card);
-    });
-}
-
-// Add to cart
-function addToCart(id) {
-    const product = products.find(p=>p.id===id);
-    const qty = parseInt(document.getElementById(`qty_${id}`).value);
-    const cartItem = cart.find(c=>c.id===id);
-    if(cartItem){
-        cartItem.qty += qty;
-    } else {
-        cart.push({...product, qty: qty});
-    }
-    updateCart();
-}
-
-// Remove from cart
-function removeFromCart(id){
-    const index = cart.findIndex(c=>c.id===id);
-    if(index!==-1) cart.splice(index,1);
-    updateCart();
-}
-
-// Update cart
-function updateCart(){
-    const ul = document.getElementById("cartItems");
-    ul.innerHTML = "";
-    let total = 0;
-    cart.forEach(item=>{
-        const li = document.createElement("li");
-        li.innerHTML = `${item.name} x${item.qty} - ₹${item.price*item.qty}`;
-        ul.appendChild(li);
-        total += item.price*item.qty;
-    });
-    document.getElementById("cartTotal").innerText = `Total: ₹${total}`;
-}
-
-// Checkout demo
-document.getElementById("checkoutBtn").onclick = function(){
-    if(cart.length===0){
-        alert("Cart is empty!");
-    } else {
-        alert("This is a demo checkout. Replace with real payment integration.");
-    }
-}
-
-// Initialize
-renderProducts();
-</script>
+</footer>
 
 </body>
 </html>
