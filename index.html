@@ -264,6 +264,39 @@ opacity:0.6;
 font-size:13px;
 }
 
+/* GAME / QUIZ SECTION */
+
+#game-section h2{
+margin-bottom:30px;
+}
+
+.quiz-container, .answers-container{
+display:flex;
+justify-content:center;
+gap:20px;
+flex-wrap:wrap;
+margin-top:20px;
+}
+
+.ingredient, .answer{
+padding:15px 20px;
+background: rgba(255,255,255,0.1);
+border-radius:12px;
+cursor:pointer;
+transition:0.3s;
+}
+
+.ingredient:hover, .answer:hover{
+background:#d4af37;
+color:#0b2e25;
+}
+
+#result{
+margin-top:20px;
+font-weight:bold;
+color:#d4af37;
+}
+
 </style>
 </head>
 
@@ -356,6 +389,57 @@ AI Powered Skin Intelligence & Smart Skincare Guidance
 </div>
 
 </div>
+
+<!-- GAME / QUIZ SECTION ADDED ✅ -->
+
+<div class="section" id="game-section">
+<h2>Skincare Fun Quiz</h2>
+<p>Click the ingredient to match its benefit!</p>
+
+<div class="quiz-container">
+<div class="ingredient" data-answer="Moisturizes">Aloe Vera</div>
+<div class="ingredient" data-answer="Antioxidant">Green Tea</div>
+<div class="ingredient" data-answer="Brightens">Vitamin C</div>
+</div>
+
+<div class="answers-container">
+<div class="answer" data-match="Moisturizes">Moisturizes</div>
+<div class="answer" data-match="Antioxidant">Antioxidant</div>
+<div class="answer" data-match="Brightens">Brightens</div>
+</div>
+
+<p id="result"></p>
+</div>
+
+<script>
+const ingredients = document.querySelectorAll('.ingredient');
+const answers = document.querySelectorAll('.answer');
+const result = document.getElementById('result');
+
+ingredients.forEach(ing => {
+  ing.addEventListener('click', () => {
+    let matched = false;
+    answers.forEach(ans => {
+      if(ans.dataset.match === ing.dataset.answer) {
+        matched = true;
+        ans.style.background = '#d4af37';
+        ans.style.color = '#0b2e25';
+      }
+    });
+    if(matched){
+      ing.style.opacity = 0.5;
+      ing.style.pointerEvents = 'none';
+      result.textContent = "Correct! Keep going...";
+    } else {
+      result.textContent = "Try Again!";
+    }
+    const allMatched = [...answers].every(ans => ans.style.background === 'rgb(212, 175, 55)');
+    if(allMatched){
+      result.textContent = "🎉 You’re a skincare pro! Check our shop for personalized tips!";
+    }
+  });
+});
+</script>
 
 <div class="section">
 
