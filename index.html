@@ -13,17 +13,25 @@
 body{
 margin:0;
 font-family:'Inter',sans-serif;
-background: radial-gradient(circle at top,#123d32,#071a15);
-color:white;
+background: radial-gradient(circle at top,#0a0f0d,#020303);
+color:#eaeaea;
 text-align:center;
 animation:fadePage 1.2s ease;
 }
 
+/* GOLD SYSTEM */
+:root{
+--gold:#c9a84f;
+--soft-gold:#e6c27a;
+}
+
+/* ANIMATION */
 @keyframes fadePage{
 from{opacity:0;transform:translateY(20px);}
 to{opacity:1;transform:translateY(0);}
 }
 
+/* NAVBAR */
 nav{
 display:flex;
 justify-content:center;
@@ -31,44 +39,49 @@ align-items:center;
 flex-wrap:wrap;
 gap:20px;
 padding:25px;
-background:rgba(255,255,255,0.04);
-backdrop-filter:blur(10px);
+background:rgba(255,255,255,0.03);
+backdrop-filter:blur(18px);
+border-bottom:1px solid rgba(255,255,255,0.08);
 }
 
 nav a{
 text-decoration:none;
-color:white;
+color:#ddd;
 font-size:14px;
 letter-spacing:1px;
-padding:10px 18px;
-border-radius:8px;
-border:1px solid rgba(255,255,255,0.2);
-transition:0.3s;
+padding:10px 20px;
+border-radius:10px;
+border:1px solid rgba(255,255,255,0.15);
+transition:0.4s;
 }
 
 nav a:hover{
-background:#d4af37;
-color:#0b2e25;
-border-color:#d4af37;
+background:var(--gold);
+color:#000;
+border-color:var(--gold);
+box-shadow:0 0 20px rgba(201,168,79,0.4);
 }
 
+/* HERO */
 .hero{
-margin-top:120px;
+margin-top:140px;
 padding:20px;
 }
 
 h1{
 font-family:'Playfair Display',serif;
-font-size:50px;
+font-size:60px;
 margin-bottom:20px;
+letter-spacing:1px;
 }
 
 .subtitle{
-opacity:0.85;
-margin-bottom:40px;
+opacity:0.75;
+margin-bottom:50px;
 font-size:18px;
 }
 
+/* HERO IMAGE */
 .hero-image{
 margin-top:50px;
 display:flex;
@@ -78,15 +91,16 @@ justify-content:center;
 .hero-image img{
 width:85%;
 max-width:750px;
-border-radius:18px;
-box-shadow:0 20px 60px rgba(0,0,0,0.6);
+border-radius:20px;
+box-shadow:0 30px 100px rgba(0,0,0,0.9);
 transition:0.4s;
 }
 
 .hero-image img:hover{
-transform:scale(1.03);
+transform:scale(1.04);
 }
 
+/* BUTTONS */
 .main-buttons{
 display:flex;
 justify-content:center;
@@ -100,37 +114,41 @@ margin-right:auto;
 
 .btn{
 text-decoration:none;
-padding:15px 30px;
-border:1px solid #d4af37;
-border-radius:10px;
+padding:16px 34px;
+border:1px solid var(--gold);
+border-radius:12px;
 color:white;
-transition:0.3s;
+transition:0.4s;
 }
 
 .btn:hover{
-background:#d4af37;
-color:#0b2e25;
-box-shadow:0 0 20px rgba(212,175,55,0.5);
+background:var(--gold);
+color:#000;
+box-shadow:0 0 30px rgba(201,168,79,0.6);
+transform:translateY(-2px);
 }
 
 .shop-btn{
-background:linear-gradient(135deg,rgba(212,175,55,0.15),rgba(212,175,55,0.05));
-border:1px solid #d4af37;
+background:linear-gradient(135deg,rgba(201,168,79,0.15),rgba(201,168,79,0.05));
+border:1px solid var(--gold);
 }
 
+/* SECTIONS */
 .section{
-margin-top:120px;
-padding:40px;
+margin-top:160px;
+padding:60px 40px;
 max-width:1100px;
 margin:auto;
 }
 
 .section h2{
 font-family:'Playfair Display',serif;
-font-size:36px;
-margin-bottom:60px;
+font-size:40px;
+margin-bottom:70px;
+color:var(--soft-gold);
 }
 
+/* STEPS */
 .steps{
 display:flex;
 justify-content:center;
@@ -141,18 +159,20 @@ flex-wrap:wrap;
 .step-box{
 width:260px;
 padding:30px;
-border-radius:16px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.15);
-transition:0.35s;
+border-radius:18px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.12);
+transition:0.4s;
+backdrop-filter:blur(12px);
 }
 
 .step-box:hover{
-transform:translateY(-10px);
-box-shadow:0 15px 40px rgba(0,0,0,0.6);
-border-color:#d4af37;
+transform:translateY(-12px);
+box-shadow:0 20px 60px rgba(0,0,0,0.8);
+border-color:var(--gold);
 }
 
+/* INGREDIENTS */
 .ingredients{
 margin-top:70px;
 display:flex;
@@ -163,15 +183,16 @@ gap:30px;
 
 .ingredients img{
 width:260px;
-border-radius:16px;
-box-shadow:0 10px 35px rgba(0,0,0,0.6);
-transition:0.35s;
+border-radius:20px;
+box-shadow:0 25px 70px rgba(0,0,0,0.8);
+transition:0.4s;
 }
 
 .ingredients img:hover{
-transform:scale(1.05);
+transform:scale(1.06);
 }
 
+/* AI TRUST */
 .ai-trust{
 display:flex;
 justify-content:center;
@@ -182,17 +203,19 @@ flex-wrap:wrap;
 .ai-card{
 width:260px;
 padding:28px;
-border-radius:16px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.15);
+border-radius:18px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.12);
+transition:0.4s;
 }
 
 .ai-card:hover{
-transform:translateY(-8px);
-box-shadow:0 12px 35px rgba(0,0,0,0.6);
-border-color:#d4af37;
+transform:translateY(-10px);
+box-shadow:0 20px 60px rgba(0,0,0,0.8);
+border-color:var(--gold);
 }
 
+/* TESTIMONIALS */
 .testimonials{
 display:flex;
 justify-content:center;
@@ -203,15 +226,24 @@ flex-wrap:wrap;
 .testimonial{
 width:260px;
 padding:25px;
-border-radius:16px;
-background:rgba(255,255,255,0.05);
-border:1px solid rgba(255,255,255,0.15);
+border-radius:18px;
+background:rgba(255,255,255,0.04);
+border:1px solid rgba(255,255,255,0.12);
+transition:0.4s;
 }
 
+.testimonial:hover{
+transform:translateY(-10px);
+box-shadow:0 20px 60px rgba(0,0,0,0.8);
+border-color:var(--gold);
+}
+
+/* FOOTER */
 footer{
-margin-top:120px;
+margin-top:140px;
 padding:30px;
-opacity:0.6;
+opacity:0.5;
+font-size:13px;
 }
 
 </style>
@@ -295,7 +327,7 @@ opacity:0.6;
 
 <p style="max-width:700px;margin:auto;line-height:1.6;opacity:0.9;">
 Verdant Root was founded by <b>Sumit Kadian</b> to make premium skin guidance affordable and accessible.
-Millions in tier-1, tier-2 & tier-3 cities struggle without proper dermatology support.
+Millions in tier-2 & tier-3 cities struggle without proper dermatology support.
 </p>
 </div>
 
