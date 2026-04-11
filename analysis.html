@@ -337,9 +337,25 @@ let tipsHTML = `
 <li>Consult expert if needed</li>
 </ul>
 
-<button onclick="window.location.href='index.html'">
-Return Home ➜
-</button>
+<h3>Recommended Routine:</h3>
+
+<p><b>Morning:</b></p>
+<ul>
+${routine.morning.map(item => `<li>${item}</li>`).join("")}
+</ul>
+
+<p><b>Night:</b></p>
+<ul>
+${routine.night.map(item => `<li>${item}</li>`).join("")}
+</ul>
+
+<h3>Skin Improvement Timeline:</h3>
+<ul>
+${timeline.map(t => `<li><b>${t.day}:</b> ${t.status}</li>`).join("")}
+</ul>
+
+<button onclick="window.location.href='shop.html'" style="margin-top:20px;">
+View Recommended Products 🛍️
 </div>`;
 document.getElementById("resultArea").innerHTML = tipsHTML;
 
