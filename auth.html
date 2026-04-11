@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login | Verdant Root</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#050505;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+width:320px;
+padding:30px;
+background:#111;
+border-radius:12px;
+box-shadow:0 0 20px rgba(212,175,55,0.3);
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:10px;
+background:#222;
+border:none;
+color:white;
+}
+
+button{
+width:100%;
+margin-top:15px;
+padding:10px;
+background:#d4af37;
+border:none;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h2>Login / Signup</h2>
+
+<input type="text" id="name" placeholder="Full Name">
+<input type="email" id="email" placeholder="Email">
+<input type="password" id="pass" placeholder="Password">
+
+<button onclick="saveUser()">Continue</button>
+</div>
+
+<script>
+function saveUser(){
+let name = document.getElementById("name").value;
+let email = document.getElementById("email").value;
+let pass = document.getElementById("pass").value;
+
+let user = {
+name:name,
+email:email,
+pass:pass
+};
+
+localStorage.setItem("user", JSON.stringify(user));
+
+window.location.href="index.html";
+}
+</script>
+
+</body>
+</html>
