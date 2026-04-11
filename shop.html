@@ -244,6 +244,20 @@ let cart=0;
 function add(){
 cart++;
 document.getElementById("count").innerText=cart;
+
+let msg = document.createElement("div");
+msg.innerText = "🔥 Only few items left!";
+msg.style.position="fixed";
+msg.style.bottom="20px";
+msg.style.right="20px";
+msg.style.background="#d4af37";
+msg.style.color="#000";
+msg.style.padding="10px 20px";
+msg.style.borderRadius="8px";
+
+document.body.appendChild(msg);
+
+setTimeout(()=>{ msg.remove(); }, 2500);
 }
 
 function buy(){
