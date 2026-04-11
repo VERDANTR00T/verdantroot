@@ -270,19 +270,19 @@ function startAnalysis() {
         // ===== AI CORE ENGINE =====
 
 // Skin Score
-score = Math.floor(Math.random()*30)+70;
+let score = Math.floor(Math.random()*30)+70;
 
 // Confidence
-confidence = Math.floor(Math.random()*10)+85;
+let confidence = Math.floor(Math.random()*10)+85;
 
 // Routine Engine
-routine = {
+let routine = {
 morning: ["Hydrating Cleanser", "Vitamin C Serum", "Sunscreen SPF50"],
 night: ["Hydrating Cleanser", "Niacinamide Cream"]
 };
 
 // Timeline Engine
-timeline = [
+let timeline = [
 {day:"Day 1", status:"Initial condition detected"},
 {day:"Day 3", status:"Skin adapting to routine"},
 {day:"Day 7", status:"Visible glow & improvement"}
@@ -309,7 +309,7 @@ localStorage.setItem("userName", name);
          score = localStorage.getItem("score");
          confidence = localStorage.getItem("confidence");
 
- tipsHTML = `
+let tipsHTML = `
 <div class='result-card'>
 
 <h2 style="color:#d4af37;">AI Skin Report</h2>
@@ -337,25 +337,10 @@ localStorage.setItem("userName", name);
 <li>Consult expert if needed</li>
 </ul>
 
-<button onclick="window.location.href='shop.html'">
-View Recommended Products ➜
+<button onclick="window.location.href='index.html'">
+Return Home ➜
 </button>
-
-<h3>Daily Routine:</h3>
-
-<p><b>Morning:</b></p>
-<ul>
-${JSON.parse(localStorage.getItem("routine")).morning.map(item => `<li>${item}</li>`).join("")}
-</ul>
-
-<p><b>Night:</b></p>
-<ul>
-${JSON.parse(localStorage.getItem("routine")).night.map(item => `<li>${item}</li>`).join("")}
-</ul>
-<h3>Skin Improvement Timeline:</h3>
-<ul>
-${JSON.parse(localStorage.getItem("timeline")).map(t => `<li><b>${t.day}:</b> ${t.status}</li>`).join("")}
-</ul>        
+</div>`;
 document.getElementById("resultArea").innerHTML = tipsHTML;
 
         // PDF generation
@@ -422,4 +407,5 @@ document.getElementById("resultArea").innerHTML = tipsHTML;
 </script>
 
 </body>
-</html>
+    </html>
+    
