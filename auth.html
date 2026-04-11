@@ -47,15 +47,20 @@ cursor:pointer;
 </head>
 
 <body>
+<div class="auth-box">
 
-<div class="box">
-<h2>Login / Signup</h2>
+<h2>Secure Login</h2>
 
-<input type="text" id="name" placeholder="Full Name">
-<input type="email" id="email" placeholder="Email">
-<input type="password" id="pass" placeholder="Password">
+<input type="text" id="phone" placeholder="+91XXXXXXXXXX">
 
-<button onclick="saveUser()">Continue</button>
+<div id="recaptcha-container"></div>
+
+<button onclick="sendOTP()">Send OTP</button>
+
+<input type="text" id="otp" placeholder="Enter OTP">
+
+<button onclick="verifyOTP()">Verify & Login</button>
+
 </div>
 
 <script>
