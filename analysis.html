@@ -254,6 +254,17 @@ function startAnalysis() {
     if(description === "" || habits === ""){
         alert("Please fill symptoms & lifestyle");
         return;
+
+        let history = JSON.parse(localStorage.getItem("history")) || [];
+
+history.push({
+name:name,
+score:score,
+concern:concern,
+date:new Date().toLocaleDateString()
+});
+
+localStorage.setItem("history", JSON.stringify(history));
     }
 
     document.getElementById("step2").classList.remove("active");
