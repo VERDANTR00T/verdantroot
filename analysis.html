@@ -255,18 +255,7 @@ function startAnalysis() {
         alert("Please fill symptoms & lifestyle");
         return;
     }
-
-        let history = JSON.parse(localStorage.getItem("history")) || [];
-
-history.push({
-name:name,
-score:score,
-concern:concern,
-date:new Date().toLocaleDateString()
-});
-
-localStorage.setItem("history", JSON.stringify(history));
-    }
+    
 
     document.getElementById("step2").classList.remove("active");
     document.getElementById("step3").classList.add("active");
@@ -286,6 +275,18 @@ let score = Math.floor(Math.random()*30)+70;
 
 // Confidence
 let confidence = Math.floor(Math.random()*10)+85;
+
+let history = JSON.parse(localStorage.getItem("history")) || [];
+
+history.push({
+name:name,
+score:score,
+concern:concern,
+date:new Date().toLocaleDateString()
+});
+
+localStorage.setItem("history", JSON.stringify(history));
+    }
 
 // Routine Engine
 let routine = {
