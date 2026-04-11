@@ -228,11 +228,34 @@ button:hover .arrow {
 
 <script>
 function nextStep() {
+
+    const name = document.getElementById("name").value.trim();
+    const age = document.getElementById("age").value.trim();
+
+    if(name === "" || age === ""){
+        alert("Please fill Name and Age");
+        return;
+    }
+
+    if(age < 10 || age > 80){
+        alert("Enter valid age");
+        return;
+    }
+
     document.getElementById("step1").classList.remove("active");
     document.getElementById("step2").classList.add("active");
 }
 
 function startAnalysis() {
+
+    const description = document.getElementById("description").value.trim();
+    const habits = document.getElementById("habits").value.trim();
+
+    if(description === "" || habits === ""){
+        alert("Please fill symptoms & lifestyle");
+        return;
+    }
+
     document.getElementById("step2").classList.remove("active");
     document.getElementById("step3").classList.add("active");
 
