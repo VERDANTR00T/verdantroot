@@ -64,16 +64,6 @@ cursor:pointer;
 </div>
 
 <script>
-function saveUser(){
-let name = document.getElementById("name").value;
-let email = document.getElementById("email").value;
-let pass = document.getElementById("pass").value;
-
-let user = {
-name:name,
-email:email,
-pass:pass
-};
 
 localStorage.setItem("user", JSON.stringify(user));
 
