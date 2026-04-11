@@ -255,7 +255,6 @@ function startAnalysis() {
         alert("Please fill symptoms & lifestyle");
         return;
     }
-    
 
     document.getElementById("step2").classList.remove("active");
     document.getElementById("step3").classList.add("active");
@@ -268,17 +267,6 @@ function startAnalysis() {
         const allergies = document.getElementById("allergies").value;
         const imageFile = document.getElementById("skinImage").files[0] ? document.getElementById("skinImage").files[0] : null;
 
-let history = JSON.parse(localStorage.getItem("history")) || [];
-
-history.push({
-    name: name,
-    score: score,
-    concern: concern,
-    date: new Date().toLocaleDateString()
-});
-
-localStorage.setItem("history", JSON.stringify(history));
-
         // ===== AI CORE ENGINE =====
 
 // Skin Score
@@ -286,7 +274,6 @@ let score = Math.floor(Math.random()*30)+70;
 
 // Confidence
 let confidence = Math.floor(Math.random()*10)+85;
-
 
 // Routine Engine
 let routine = {
@@ -318,6 +305,9 @@ localStorage.setItem("userName", name);
             "Tip 3: Follow routine consistently",
             "Tip 4: Consult a specialist if condition persists"
         ];
+
+         score = localStorage.getItem("score");
+         confidence = localStorage.getItem("confidence");
 
 let tipsHTML = `
 <div class='result-card'>
@@ -366,13 +356,6 @@ ${timeline.map(t => `<li><b>${t.day}:</b> ${t.status}</li>`).join("")}
 
 <button onclick="window.location.href='shop.html'" style="margin-top:20px;">
 View Recommended Products 🛍️
-</button>
-
-<button onclick="window.location.href='dashboard.html'" 
-style="margin-top:15px; border:1px solid #d4af37; padding:12px 25px; border-radius:10px;">
-View My Skin Dashboard 📊
-</button>
-
 </div>`;
 document.getElementById("resultArea").innerHTML = tipsHTML;
 
@@ -391,17 +374,10 @@ document.getElementById("resultArea").innerHTML = tipsHTML;
             doc.text(`Allergies: ${allergies}`, 20, 75);
             let yOffset = 85;
 
-            doc.text(`Concern: ${concern}`, 20, yOffset);
-yOffset += 10;
-
-doc.text(`Symptoms: ${description}`, 20, yOffset);
-yOffset += 10;
-
-doc.text(`Lifestyle: ${habits}`, 20, yOffset);
-yOffset += 10;
-
-doc.text(`Allergies: ${allergies}`, 20, yOffset);
-yOffset += 10;
+            tips.forEach(tip => {
+                doc.text(`- ${tip}`, 20, yOffset);
+                yOffset += 10;
+            });
 
             if(imageFile){
                 const reader = new FileReader();
