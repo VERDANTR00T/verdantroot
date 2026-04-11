@@ -265,7 +265,29 @@ document.getElementById("pprice").innerText=price;
 function closePopup(){
 document.getElementById("popup").style.display="none";
 }
+  
+window.onload = function(){
 
+let routine = JSON.parse(localStorage.getItem("routine"));
+
+if(!routine) return;
+
+let products = document.querySelectorAll(".card");
+
+products.forEach(card => {
+
+let name = card.querySelector(".product-name").innerText;
+
+if(
+routine.morning.includes(name) ||
+routine.night.includes(name)
+){
+card.style.border = "1px solid gold";
+card.style.boxShadow = "0 0 20px rgba(212,175,55,0.6)";
+}
+});
+
+};
 </script>                
 
 </body>                
