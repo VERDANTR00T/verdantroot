@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Profile | Verdant Root</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#050505;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+width:350px;
+padding:30px;
+background:#111;
+border-radius:12px;
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:10px;
+background:#222;
+border:none;
+color:white;
+}
+
+button{
+width:100%;
+margin-top:15px;
+padding:10px;
+background:#d4af37;
+border:none;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+<h2>Your Profile</h2>
+
+<input type="text" id="name" placeholder="Name">
+<input type="email" id="email" placeholder="Email">
+<input type="text" id="phone" placeholder="Phone">
+<input type="text" id="address" placeholder="Address">
+
+<button onclick="saveProfile()">Save</button>
+</div>
+
+<script>
+
+let user = JSON.parse(localStorage.getItem("user"));
+
+if(user){
+document.getElementById("name").value = user.name || "";
+document.getElementById("email").value = user.email || "";
+document.getElementById("phone").value = user.phone || "";
+document.getElementById("address").value = user.address || "";
+}
+
+function saveProfile(){
+user.name = document.getElementById("name").value;
+user.email = document.getElementById("email").value;
+user.phone = document.getElementById("phone").value;
+user.address = document.getElementById("address").value;
+
+localStorage.setItem("user", JSON.stringify(user));
+
+alert("Profile Saved ✅");
+}
+
+</script>
+
+</body>
+</html>
