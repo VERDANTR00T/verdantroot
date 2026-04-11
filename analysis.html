@@ -254,6 +254,7 @@ function startAnalysis() {
     if(description === "" || habits === ""){
         alert("Please fill symptoms & lifestyle");
         return;
+    }
 
         let history = JSON.parse(localStorage.getItem("history")) || [];
 
@@ -317,9 +318,6 @@ localStorage.setItem("userName", name);
             "Tip 4: Consult a specialist if condition persists"
         ];
 
-         score = localStorage.getItem("score");
-         confidence = localStorage.getItem("confidence");
-
 let tipsHTML = `
 <div class='result-card'>
 
@@ -367,13 +365,15 @@ ${timeline.map(t => `<li><b>${t.day}:</b> ${t.status}</li>`).join("")}
 
 <button onclick="window.location.href='shop.html'" style="margin-top:20px;">
 View Recommended Products 🛍️
-</div>`;
+</button>
 
 <button onclick="window.location.href='dashboard.html'" 
 style="margin-top:15px; border:1px solid #d4af37; padding:12px 25px; border-radius:10px;">
 View My Skin Dashboard 📊
 </button>
 
+</div>
+`;
 document.getElementById("resultArea").innerHTML = tipsHTML;
 
         // PDF generation
@@ -391,10 +391,17 @@ document.getElementById("resultArea").innerHTML = tipsHTML;
             doc.text(`Allergies: ${allergies}`, 20, 75);
             let yOffset = 85;
 
-            tips.forEach(tip => {
-                doc.text(`- ${tip}`, 20, yOffset);
-                yOffset += 10;
-            });
+            doc.text(`Concern: ${concern}`, 20, yOffset);
+yOffset += 10;
+
+doc.text(`Symptoms: ${description}`, 20, yOffset);
+yOffset += 10;
+
+doc.text(`Lifestyle: ${habits}`, 20, yOffset);
+yOffset += 10;
+
+doc.text(`Allergies: ${allergies}`, 20, yOffset);
+yOffset += 10;
 
             if(imageFile){
                 const reader = new FileReader();
