@@ -359,5 +359,18 @@ Millions in tier-2 & tier-3 cities struggle without proper dermatology support.
 © Verdant Root — Smart Skincare Intelligence
 </footer>
 
+<script>
+function checkLogin(page){
+let user = localStorage.getItem("user");
+
+if(user){
+window.location.href = page;
+}else{
+alert("Please login first to continue");
+window.location.href = "auth.html";
+}
+}
+</script>
+  
 </body>
 </html>
