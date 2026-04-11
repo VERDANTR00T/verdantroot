@@ -283,9 +283,43 @@ localStorage.setItem("userName", name);
             "Tip 4: Consult a specialist if condition persists"
         ];
 
-        let tipsHTML = "<div class='result-card'><h2>Advanced AI + Doctor Verified Tips:</h2><ul>";
-        tips.forEach(tip => { tipsHTML += `<li>${tip}</li>`; });
-        tipsHTML += `</ul><button onclick="window.location.href='index.html'">Return Home <span class="arrow">➜</span></button></div>`;
+        let score = localStorage.getItem("score");
+let confidence = localStorage.getItem("confidence");
+
+let tipsHTML = `
+<div class='result-card'>
+
+<h2 style="color:#d4af37;">AI Skin Report</h2>
+
+<p><b>Skin Score:</b> ${score}/100</p>
+<p><b>AI Confidence:</b> ${confidence}%</p>
+
+<hr style="opacity:0.2; margin:20px 0;">
+
+<h3>Detected Concern:</h3>
+<p>${concern}</p>
+
+<h3>AI Insights:</h3>
+<ul>
+<li>${description}</li>
+<li>${habits}</li>
+<li>${allergies}</li>
+</ul>
+
+<h3>Smart Recommendations:</h3>
+<ul>
+<li>Use gentle, non-comedogenic products</li>
+<li>Apply sunscreen daily</li>
+<li>Stay hydrated & consistent</li>
+<li>Consult expert if needed</li>
+</ul>
+
+<button onclick="window.location.href='index.html'">
+Return Home ➜
+</button>
+
+</div>
+`;
         document.getElementById("resultArea").innerHTML = tipsHTML;
 
         // PDF generation
