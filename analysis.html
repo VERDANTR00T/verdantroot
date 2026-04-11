@@ -340,7 +340,6 @@ let tipsHTML = `
 <button onclick="window.location.href='shop.html'">
 View Recommended Products ➜
 </button>
-</div>`;
 
 <h3>Daily Routine:</h3>
 
@@ -357,7 +356,7 @@ ${JSON.parse(localStorage.getItem("routine")).night.map(item => `<li>${item}</li
 <ul>
 ${JSON.parse(localStorage.getItem("timeline")).map(t => `<li><b>${t.day}:</b> ${t.status}</li>`).join("")}
 </ul>        
-    document.getElementById("resultArea").innerHTML = tipsHTML;
+document.getElementById("resultArea").innerHTML = tipsHTML;
 
         // PDF generation
         document.getElementById("downloadPdfBtn").onclick = async function() {
