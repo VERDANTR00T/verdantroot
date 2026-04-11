@@ -1,1 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Dashboard | Verdant Root</title>
 
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#050505;
+color:white;
+padding:30px;
+}
+
+h1{
+color:gold;
+}
+
+.card{
+background:#111;
+padding:20px;
+margin-top:15px;
+border-radius:10px;
+border:1px solid rgba(255,215,0,0.3);
+}
+</style>
+</head>
+
+<body>
+
+<h1>Your Skin History</h1>
+
+<div id="data"></div>
+
+<script>
+let history = JSON.parse(localStorage.getItem("history")) || [];
+
+let html = "";
+
+history.reverse().forEach(item=>{
+html += `
+<div class="card">
+<b>Name:</b> ${item.name}<br>
+<b>Score:</b> ${item.score}/100<br>
+<b>Concern:</b> ${item.concern}<br>
+<b>Date:</b> ${item.date}
+</div>
+`;
+});
+
+document.getElementById("data").innerHTML = html;
+</script>
+
+</body>
+</html>
