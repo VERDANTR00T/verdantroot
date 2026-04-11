@@ -71,5 +71,71 @@ window.location.href="index.html";
 }
 </script>
 
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<script>
+
+// 🔥 YOUR REAL CONFIG
+var firebaseConfig = {
+  apiKey: "AIzaSyCVwTDc6UY7mZS0ueRnvR2gh_h-UdtS-n0",
+  authDomain: "verdantroot-fd3e6.firebaseapp.com",
+  projectId: "verdantroot-fd3e6",
+  storageBucket: "verdantroot-fd3e6.firebasestorage.app",
+  messagingSenderId: "239731093925",
+  appId: "1:239731093925:web:69cedcbbf680b37ba9384c"
+};
+
+firebase.initializeApp(firebaseConfig);
+
+// 🔐 RECAPTCHA INIT
+window.onload = function(){
+    window.recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+        'size': 'normal'
+    });
+};
+
+// GLOBAL
+let confirmationResult;
+
+// 📩 SEND OTP
+function sendOTP(){
+    let phone = document.getElementById("phone").value;
+
+    firebase.auth().signInWithPhoneNumber(phone, recaptchaVerifier)
+    .then(function(result){
+        confirmationResult = result;
+        alert("OTP Sent ✅");
+    })
+    .catch(function(error){
+        alert(error.message);
+    });
+}
+
+// ✅ VERIFY OTP
+function verifyOTP(){
+    let code = document.getElementById("otp").value;
+
+    confirmationResult.confirm(code)
+    .then(function(result){
+
+        let user = {
+            phone: result.user.phoneNumber
+        };
+
+        localStorage.setItem("user", JSON.stringify(user));
+
+        alert("Login Successful 🚀");
+
+        window.location.href = "index.html";
+
+    })
+    .catch(function(error){
+        alert("Invalid OTP ❌");
+    });
+}
+
+</script>
+
 </body>
 </html>
