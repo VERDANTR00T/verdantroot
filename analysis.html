@@ -337,11 +337,27 @@ let tipsHTML = `
 <li>Consult expert if needed</li>
 </ul>
 
-<button onclick="window.location.href='index.html'">
-Return Home ➜
+<button onclick="window.location.href='shop.html'">
+View Recommended Products ➜
 </button>
 </div>`;
-document.getElementById("resultArea").innerHTML = tipsHTML;
+
+<h3>Daily Routine:</h3>
+
+<p><b>Morning:</b></p>
+<ul>
+${JSON.parse(localStorage.getItem("routine")).morning.map(item => `<li>${item}</li>`).join("")}
+</ul>
+
+<p><b>Night:</b></p>
+<ul>
+${JSON.parse(localStorage.getItem("routine")).night.map(item => `<li>${item}</li>`).join("")}
+</ul>
+<h3>Skin Improvement Timeline:</h3>
+<ul>
+${JSON.parse(localStorage.getItem("timeline")).map(t => `<li><b>${t.day}:</b> ${t.status}</li>`).join("")}
+</ul>        
+    document.getElementById("resultArea").innerHTML = tipsHTML;
 
         // PDF generation
         document.getElementById("downloadPdfBtn").onclick = async function() {
