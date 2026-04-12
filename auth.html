@@ -102,8 +102,9 @@ function sendOTP(){
         alert("OTP Sent ✅");
     })
     .catch(function(error){
-        alert(error.message);
-    });
+    console.log(error);
+    alert(error.message);
+});
 }
 
 // ✅ VERIFY OTP
