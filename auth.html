@@ -123,6 +123,10 @@ return;
 firebase.auth().createUserWithEmailAndPassword(email, pass)
 .then(function(result){
 
+  result.user.updateProfile({
+displayName: name
+});
+  
 let user = {
 name: name,
 email: email
