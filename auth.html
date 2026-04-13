@@ -52,11 +52,6 @@ border:none;
 cursor:pointer;
 font-weight:bold;
 border-radius:8px;
-transition:0.3s;
-}
-
-button:hover{
-opacity:0.9;
 }
 
 .google-btn{
@@ -94,10 +89,11 @@ font-size:13px;
 <!-- Firebase -->
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
 
 <script>
 
-// 🔥 FIREBASE CONFIG
+// 🔥 CONFIG
 var firebaseConfig = {
   apiKey: "AIzaSyCVwTDc6UY7mZS0ueRnvR2gh_h-UdtS-n0",
   authDomain: "verdantroot-fd3e6.firebaseapp.com",
@@ -108,31 +104,43 @@ var firebaseConfig = {
 };
 
 firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
 
+// ==========================
 // ✅ SIGNUP
+// ==========================
 function signup(){
+
 let name = document.getElementById("name").value;
 let email = document.getElementById("email").value;
 let pass = document.getElementById("password").value;
 
 if(!name || !email || !pass){
-alert("Please fill all fields");
+alert("Fill all fields ❌");
 return;
 }
 
 firebase.auth().createUserWithEmailAndPassword(email, pass)
 .then(function(result){
 
-  result.user.updateProfile({
+// update profile
+result.user.updateProfile({
 displayName: name
 });
-  
-let user = {
+
+// 🔥 SAVE IN DATABASE
+let userData = {
+uid: result.user.uid,
 name: name,
-email: email
+email: email,
+plan: "free",
+createdAt: new Date()
 };
 
-localStorage.setItem("user", JSON.stringify(user));
+db.collection("users").doc(result.user.uid).set(userData);
+
+// local storage
+localStorage.setItem("user", JSON.stringify(userData));
 
 alert("Account Created ✅");
 window.location.href="index.html";
@@ -141,52 +149,82 @@ window.location.href="index.html";
 .catch(function(error){
 alert(error.message);
 });
+
 }
 
+// ==========================
 // ✅ LOGIN
+// ==========================
 function login(){
+
 let email = document.getElementById("email").value;
 let pass = document.getElementById("password").value;
 
 firebase.auth().signInWithEmailAndPassword(email, pass)
 .then(function(result){
 
-let user = {
-email: result.user.email
-};
+// 🔥 FETCH FROM DATABASE
+db.collection("users").doc(result.user.uid).get()
+.then(function(doc){
+
+let user = doc.data();
 
 localStorage.setItem("user", JSON.stringify(user));
 
 alert("Login Successful 🚀");
 window.location.href="index.html";
 
+});
+
 })
 .catch(function(error){
 alert(error.message);
 });
+
 }
 
+// ==========================
 // 🔥 GOOGLE LOGIN
+// ==========================
 function googleLogin(){
+
 var provider = new firebase.auth.GoogleAuthProvider();
 
 firebase.auth().signInWithPopup(provider)
 .then(function(result){
 
-let user = {
+let userRef = db.collection("users").doc(result.user.uid);
+
+// check user exist
+userRef.get().then(function(doc){
+
+if(doc.exists){
+localStorage.setItem("user", JSON.stringify(doc.data()));
+}else{
+
+let newUser = {
+uid: result.user.uid,
 name: result.user.displayName,
-email: result.user.email
+email: result.user.email,
+plan: "free",
+createdAt: new Date()
 };
 
-localStorage.setItem("user", JSON.stringify(user));
+userRef.set(newUser);
+localStorage.setItem("user", JSON.stringify(newUser));
+
+}
 
 alert("Google Login Successful 🚀");
 window.location.href="index.html";
+
+});
 
 })
 .catch(function(error){
 alert(error.message);
 });
+
 }
 
 </script>
