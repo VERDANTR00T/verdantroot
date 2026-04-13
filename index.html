@@ -393,11 +393,17 @@ firebase.initializeApp(firebaseConfig);
 
 <script>
 
+window.onload = function(){
+
 let user = JSON.parse(localStorage.getItem("user"));
 
-if(user){
+console.log("USER DATA:", user); // debug
+
+if(user && document.getElementById("userName")){
 document.getElementById("userName").innerText = user.name || "My Account";
 }
+
+};
 
 </script>
   
