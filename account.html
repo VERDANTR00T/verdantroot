@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My Account</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:#050505;
+color:white;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.box{
+width:350px;
+padding:30px;
+background:#111;
+border-radius:12px;
+text-align:center;
+box-shadow:0 0 20px rgba(212,175,55,0.3);
+}
+
+input{
+width:100%;
+padding:10px;
+margin-top:10px;
+background:#222;
+border:none;
+color:white;
+}
+
+button{
+width:100%;
+margin-top:15px;
+padding:10px;
+background:#d4af37;
+border:none;
+cursor:pointer;
+}
+</style>
+</head>
+
+<body>
+
+<div class="box">
+
+<h2>My Account</h2>
+
+<input type="text" id="name" placeholder="Name">
+<input type="text" id="phone" placeholder="Phone">
+<input type="text" id="address" placeholder="Address">
+
+<button onclick="saveProfile()">Save Details</button>
+
+</div>
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+
+<script>
+
+// CONFIG
+var firebaseConfig = {
+  apiKey: "AIzaSy...",
+  authDomain: "verdantroot-fd3e6.firebaseapp.com",
+  projectId: "verdantroot-fd3e6"
+};
+
+firebase.initializeApp(firebaseConfig);
+var db = firebase.firestore();
+
+// LOAD USER
+let user = JSON.parse(localStorage.getItem("user"));
+
+if(!user){
+alert("Login first");
+window.location.href="auth.html";
+}
+
+// AUTO FILL
+window.onload = function(){
+document.getElementById("name").value = user.name || "";
+}
+
+// SAVE PROFILE
+function saveProfile(){
+
+let name = document.getElementById("name").value;
+let phone = document.getElementById("phone").value;
+let address = document.getElementById("address").value;
+
+let updatedUser = {
+...user,
+name: name,
+phone: phone,
+address: address
+};
+
+// FIRESTORE UPDATE
+db.collection("users").doc(user.uid).set(updatedUser);
+
+// LOCAL UPDATE
+localStorage.setItem("user", JSON.stringify(updatedUser));
+
+alert("Profile Saved ✅");
+
+}
+
+</script>
+
+</body>
+</html>
