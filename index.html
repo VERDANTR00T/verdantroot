@@ -256,7 +256,7 @@ font-size:13px;
 <a href="analysis.html">AI Skin Analysis</a>
 <a href="shop.html">Shop</a>
 <a href="auth.html">Login / Account</a>
-<a href="profile.html">My Account</a>
+<a href="account.html" id="userName">My Account</a>
 </nav>
 
 <div class="hero">
@@ -389,6 +389,16 @@ const firebaseConfig = {
 
 // INIT FIREBASE
 firebase.initializeApp(firebaseConfig);
+</script>
+
+<script>
+
+let user = JSON.parse(localStorage.getItem("user"));
+
+if(user){
+document.getElementById("userName").innerText = user.name || "My Account";
+}
+
 </script>
   
 </body>
