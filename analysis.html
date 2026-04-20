@@ -247,20 +247,6 @@ function nextStep() {
 }
 
 function startAnalysis() {
-   // 🔒 PREMIUM LOCK START
-let user = JSON.parse(localStorage.getItem("user"));
-
-if(!user){
-alert("Login Required ❌");
-window.location.href="auth.html";
-return;
-}
-
-if(user.plan !== "premium"){
-alert("This feature is Premium 🔒");
-return;
-}
-// 🔒 PREMIUM LOCK END
 
     const description = document.getElementById("description").value.trim();
     const habits = document.getElementById("habits").value.trim();
