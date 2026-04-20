@@ -407,6 +407,14 @@ document.getElementById("userName").innerText = user.name || "My Account";
 };
 
 </script>
+
+<script>
+function logout(){
+localStorage.removeItem("user");
+alert("Logged out");
+window.location.href="auth.html";
+}
+</script>
   
 </body>
 </html>
